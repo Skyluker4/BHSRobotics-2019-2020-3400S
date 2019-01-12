@@ -17,7 +17,7 @@ The code for team 3400S's robot.
 * [**/pros/\***](include/pros) - Files required for interacting with robot API. Included in **api.h** and **main.h**.
 * [**api.h**](include/api.h) - The file to include to interact with the robot API.
 * [**config.h**](include/config.h) - Robot configuration.
-* [**main.h**](include/main.h) - Common header files to include.
+* [**main.h**](include/main.h) - Defines functions to be run by robot and includes **api.h**.
 
 ### [firmware/](firmware/)
 
