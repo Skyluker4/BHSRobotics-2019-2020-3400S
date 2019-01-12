@@ -7,11 +7,11 @@
 void opcontrol()
 {
 #include "config.h"
+	// Set up variables
 	uint_least8_t speed = 64;
 	int_least16_t leftX, leftY, power, turn, left, right;
 
-	while (true)
-	{
+	while (true) {
 		// Drive
 		// Speed change
 		if (ctr_master.get_digital(DIGITAL_X) && speed < 116)
