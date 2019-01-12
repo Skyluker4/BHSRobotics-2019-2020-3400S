@@ -8,7 +8,7 @@ void opcontrol()
 {
 #include "config.h"
 	// Set up variables
-	uint_least8_t speed = 64;
+	uint_least8_t speed = 127;
 	int_least16_t leftX, leftY, power, turn, left, right;
 
 	while (true) {
