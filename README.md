@@ -6,7 +6,7 @@ The code for team 3400S's robot.
 
 ### [src/](src/)
 
-* [**initialize.cpp**](src/initialize.cpp) - Sets up the robot
+* [**initialize.cpp**](src/initialize.cpp) - Sets up the robot.
 * [**autonomous.cpp**](src/autonomous.cpp) - Code for the autonomous period (15 seconds).
 * [**opcontrol.cpp**](src/opcontrol.cpp) - Code for controlling the robot with the controller.
 
@@ -14,7 +14,7 @@ The code for team 3400S's robot.
 
 * [**/display/\***](include/display/) - Files required for interacting with the display, should be included in **api.h** and **main.h**.
 * [**/okapi/\***](include/okapi) - Files required for OKAPI.
-* [**/pros/\***](include/pros) - Files required for interacting with robot API. Included in **api.h** and **main.h**
+* [**/pros/\***](include/pros) - Files required for interacting with robot API. Included in **api.h** and **main.h**.
 * [**api.h**](include/api.h) - The file to include to interact with the robot API.
 * [**config.h**](include/config.h) - Robot configuration.
 * [**main.h**](include/main.h) - Common header files to include.
@@ -29,7 +29,7 @@ Requires [PROS-CLI3](https://github.com/purduesigbots/pros-cli3/releases/latest)
 
 ## Uploading
 
-Plug in V5 brain into computer with micro-USB cable. Upload using "prosv5 upload"
+Plug in V5 brain into computer with micro-USB cable. Upload using "prosv5 upload".
 
 ## Resources
 
