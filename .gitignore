@@ -1,0 +1,11 @@
+# exclude everything except for source code, firmware, and docs
+/*
+!.gitignore
+!/firmware
+!/include
+!/src
+!README.md
+!project.pros
+!Makefile
+!common.mk
+!compile_commands.json
