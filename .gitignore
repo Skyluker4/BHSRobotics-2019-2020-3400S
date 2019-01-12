@@ -1,5 +1,6 @@
 # exclude everything except for source code, firmware, and docs
 /*
+compile_commands.json
 !.gitignore
 !/firmware
 !/include
