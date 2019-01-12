@@ -1,22 +1,23 @@
 #include "main.h"
-#include "config.h"
 
 // Controls how fast the robot will turn with the joystick
 #define MAX_TURN_SPEED 75
+#define MAX_JOYSTICK_SPEED 90
 
 void opcontrol()
 {
-	uint_least8_t speed = 127;
+#include "config.h"
+	uint_least8_t speed = 64;
 	int_least16_t leftX, leftY, power, turn, left, right;
 
 	while (true)
 	{
 		// Drive
 		// Speed change
-		if (ctr_master.get_digital(DIGITAL_X) && speed < 127)
-			speed++;
-		else if(ctr_master.get_digital(DIGITAL_B) && speed > 1)
-			speed--;
+		if (ctr_master.get_digital(DIGITAL_X) && speed < 116)
+			speed += 12;
+		else if(ctr_master.get_digital(DIGITAL_B) && speed > 12)
+			speed -= 12;
 
 		// Forward
 		if (ctr_master.get_digital(DIGITAL_UP)) {
@@ -50,21 +51,21 @@ void opcontrol()
 			leftY = -1 * ctr_master.get_analog(ANALOG_LEFT_Y);
 			leftX = ctr_master.get_analog(ANALOG_LEFT_X);
 
-			// Control speed with buttons
+			// Max speed of joystick
 			power = leftY > 0 ?
-				leftY > speed ?
-					speed
+				leftY > MAX_JOYSTICK_SPEED ?
+					MAX_JOYSTICK_SPEED
 					: leftY
-				: leftY < -speed ?
-					-speed
+				: leftY < -MAX_JOYSTICK_SPEED ?
+					-MAX_JOYSTICK_SPEED
 					: leftY;
 
 			turn = leftX > 0 ?
-				leftX > speed ?
-					speed
+				leftX > MAX_JOYSTICK_SPEED ?
+					MAX_JOYSTICK_SPEED
 					: leftX
-				: leftX < -speed ?
-					-speed
+				: leftX < -MAX_JOYSTICK_SPEED ?
+					-MAX_JOYSTICK_SPEED
 					: leftX;
 
 			// Control how fast the joystick can turn the robot
@@ -85,24 +86,20 @@ void opcontrol()
 		}
 
 		// Combine
-		if (ctr_master.get_digital(DIGITAL_L1)) {
-			mtr_combine.move(127);
-		}
-		else if (ctr_master.get_digital(DIGITAL_L2)) {
+		if (ctr_master.get_digital(DIGITAL_L1))
+			mtr_combine.move(110);
+		else if (ctr_master.get_digital(DIGITAL_L2))
 			mtr_combine.move(-127);
-		} else {
+		else
 			mtr_combine.move(0);
-		}
 
 		// Launcher
-		if (ctr_master.get_digital(DIGITAL_R1)) {
+		if (ctr_master.get_digital(DIGITAL_R1))
+			mtr_launcher.move(-70);
+		else if (ctr_master.get_digital(DIGITAL_R2))
 			mtr_launcher.move(127);
-		}
-		else if (ctr_master.get_digital(DIGITAL_R2)) {
-			mtr_launcher.move(-127);
-		} else {
+		else
 			mtr_launcher.move(0);
-		}
 
 		// Delay for controller
 		pros::delay(2);
