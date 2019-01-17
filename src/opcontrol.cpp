@@ -94,12 +94,18 @@ void opcontrol()
 			mtr_combine.move(0);
 
 		// Launcher
-		if (ctr_master.get_digital(DIGITAL_R1))
-			mtr_launcher.move(-70);
-		else if (ctr_master.get_digital(DIGITAL_R2))
-			mtr_launcher.move(127);
-		else
-			mtr_launcher.move(0);
+		if (ctr_master.get_digital(DIGITAL_R1)) {
+			mtr_launcher1.move(-70);
+			mtr_launcher2.move(-70);
+		}
+		else if (ctr_master.get_digital(DIGITAL_R2)) {
+			mtr_launcher1.move(127);
+			mtr_launcher2.move(127);
+		}
+		else {
+			mtr_launcher1.move(0);
+			mtr_launcher2.move(0);
+		}
 
 		// Delay for controller
 		pros::delay(2);
