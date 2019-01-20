@@ -28,31 +28,31 @@ void opcontrol() {
 
 		// Forward
 		if (ctr_master.get_digital(DIGITAL_UP)) {
-			mtr_frontLeft.move(-speed);
-			mtr_backLeft.move(-speed);
-			mtr_frontRight.move(-speed);
-			mtr_backRight.move(-speed);
+			mtr_frontLeft = -speed;
+			mtr_backLeft = -speed;
+			mtr_frontRight = -speed;
+			mtr_backRight = -speed;
 		}
 		// Backwards
 		else if (ctr_master.get_digital(DIGITAL_DOWN)) {
-			mtr_frontLeft.move(speed);
-			mtr_backLeft.move(speed);
-			mtr_frontRight.move(speed);
-			mtr_backRight.move(speed);
+			mtr_frontLeft = speed;
+			mtr_backLeft = speed;
+			mtr_frontRight = speed;
+			mtr_backRight = speed;
 		}
 		// Left
 		else if (ctr_master.get_digital(DIGITAL_LEFT)) {
-			mtr_frontLeft.move(speed);
-			mtr_backLeft.move(speed);
-			mtr_frontRight.move(-speed);
-			mtr_backRight.move(-speed);
+			mtr_frontLeft = speed;
+			mtr_backLeft = speed;
+			mtr_frontRight = -speed;
+			mtr_backRight = -speed;
 		}
 		// Right
 		else if (ctr_master.get_digital(DIGITAL_RIGHT)) {
-			mtr_frontLeft.move(-speed);
-			mtr_backLeft.move(-speed);
-			mtr_frontRight.move(speed);
-			mtr_backRight.move(speed);
+			mtr_frontLeft = -speed;
+			mtr_backLeft = -speed;
+			mtr_frontRight = speed;
+			mtr_backRight = speed;
 		} else {
 			// Get joystick values
 			leftY = -1 * ctr_master.get_analog(ANALOG_LEFT_Y);
@@ -86,32 +86,32 @@ void opcontrol() {
 			right = power + turn;
 
 			// Set motors accordingly
-			mtr_frontLeft.move(left);
-			mtr_backLeft.move(left);
-			mtr_frontRight.move(right);
-			mtr_backRight.move(right);
+			mtr_frontLeft = left;
+			mtr_backLeft = left;
+			mtr_frontRight = right;
+			mtr_backRight = right;
 		}
 
 		// Combine
 		if (ctr_master.get_digital(DIGITAL_L1))
-			mtr_combine.move(110);
+			mtr_combine = 110;
 		else if (ctr_master.get_digital(DIGITAL_L2))
-			mtr_combine.move(-127);
+			mtr_combine = -127;
 		else
-			mtr_combine.move(0);
+			mtr_combine = 0;
 
 		// Launcher
 		if (ctr_master.get_digital(DIGITAL_R1)) {
-			mtr_launcher1.move(-70);
-			mtr_launcher2.move(-70);
+			mtr_launcher1 = -70;
+			mtr_launcher2 = -70;
 		}
 		else if (ctr_master.get_digital(DIGITAL_R2)) {
-			mtr_launcher1.move(127);
-			mtr_launcher2.move(127);
+			mtr_launcher1 = 127;
+			mtr_launcher2 = 127;
 		}
 		else {
-			mtr_launcher1.move(0);
-			mtr_launcher2.move(0);
+			mtr_launcher1 = 0;
+			mtr_launcher2 = 0;
 		}
 
 		// Delay for controller
