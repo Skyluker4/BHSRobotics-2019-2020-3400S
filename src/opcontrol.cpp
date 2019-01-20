@@ -8,8 +8,8 @@
 
 void opcontrol() {
 	// Set up variables
-	uint_least8_t speed = 127;
-	int_least16_t leftX, leftY, power, turn, left, right;
+	uint_fast8_t speed = 127;
+	int_fast16_t leftX, leftY, power, turn, left, right;
 
 	while (true) {
 		// Check for errors
