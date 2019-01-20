@@ -68,18 +68,23 @@ namespace error {
         }
     }
 
-    void checkBatteryTemp() {
-        if(pros::battery::get_temperature() > 55)
+    double checkBatteryTemp() {
+        double temp = pros::battery::get_temperature();
+        if (temp > 55)
             lastError = lastWarning = ERROR_BATTERY_TEMPERATURE;
+        return temp;
     }
 
-    void checkRobotBattery() {
-        if (pros::battery::get_capacity() < LOWBATTERY_LEVEL)
+    double checkRobotBattery() {
+        double cap = pros::battery::get_capacity();
+        if (cap <= LOWBATTERY_LEVEL)
             lastWarning = WARNING_ROBOT_LOWBATTERY;
+        return cap;
     }
+
     double checkControllerBattery(pros::Controller &ctr) {
         const double level = ctr.get_battery_level();
-        if (level < LOWBATTERY_LEVEL)
+        if (level <= LOWBATTERY_LEVEL)
             lastWarning = WARNING_CONTROLLER_LOWBATTERY;
         return level;
     }
@@ -91,8 +96,8 @@ namespace error {
     }
 
     double checkAllBatteries(pros::Controller &ctr) {
-        double controllerLevel = checkControllerBattery(ctr);
-        double robotLevel = pros::battery::get_capacity();
+        const double controllerLevel = checkControllerBattery(ctr);
+        const double robotLevel = pros::battery::get_capacity();
 
         if(robotLevel < LOWBATTERY_LEVEL)
             lastWarning = WARNING_ROBOT_LOWBATTERY;
@@ -103,10 +108,7 @@ namespace error {
     double checkAllBatteries(pros::Controller &ctr1, pros::Controller &ctr2) {
         double ctr1Level = checkControllerBattery(ctr1);
         double ctr2Level = checkControllerBattery(ctr2);
-        double robotLevel = pros::battery::get_capacity();
-
-        if (robotLevel < LOWBATTERY_LEVEL)
-            lastWarning = WARNING_ROBOT_LOWBATTERY;
+        double robotLevel = checkRobotBattery();
 
         return robotLevel < ctr1Level && robotLevel < ctr2Level ?
             robotLevel : ctr1Level < ctr2Level ?

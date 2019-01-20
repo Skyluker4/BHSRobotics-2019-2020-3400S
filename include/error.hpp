@@ -44,8 +44,8 @@ namespace error {
     void getMotorError(pros::Motor &motor);
     template <typename M, typename... Args> void getMotorError(M mtr, Args... mtrs);
 
-    void checkBatteryTemp();
-    void checkRobotBattery();
+    double checkBatteryTemp();
+    double checkRobotBattery();
     double checkControllerBattery(pros::Controller &ctr);
     double checkControllerBatteries(pros::Controller &ctr1, pros::Controller &ctr2);
     double checkAllBatteries(pros::Controller &ctr);
