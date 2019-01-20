@@ -9,12 +9,15 @@ namespace error {
     void clearAllMsgs() {
         lastError = 0;
         lastWarning = 0;
+        errno = 0;
     }
 
     void getError() {
         checkBatteryTemp();
         if (errno == PROS_ERR)
             lastError = lastWarning = ERROR_PROS;
+        else if(errno != 0)
+            lastError = lastWarning = ERROR_ERRNO;
     }
 
     void getError(pros::Controller &ctr) {
@@ -60,10 +63,10 @@ namespace error {
                 lastError = lastWarning = ERROR_MOTOR_HBRIDGE_FAULT | mtr._port;
                 break;
             case pros::E_MOTOR_FAULT_OVER_CURRENT:
-                lastError = lastWarning = ERROR_MOTOR_CURRENT;
+                lastError = lastWarning = ERROR_MOTOR_CURRENT | mtr._port;
                 break;
             case pros::E_MOTOR_FAULT_DRV_OVER_CURRENT:
-                lastError = lastWarning = ERROR_MOTOR_HBRIDGE_CURRENT;
+                lastError = lastWarning = ERROR_MOTOR_HBRIDGE_CURRENT | mtr._port;
                 break;
         }
     }
@@ -85,13 +88,14 @@ namespace error {
     double checkControllerBattery(pros::Controller &ctr) {
         const double level = ctr.get_battery_level();
         if (level <= LOWBATTERY_LEVEL)
-            lastWarning = WARNING_CONTROLLER_LOWBATTERY;
+            lastWarning = WARNING_CONTROLLER_LOWBATTERY | ctr._id;
         return level;
     }
 
     double checkControllerBatteries(pros::Controller &ctr1, pros::Controller &ctr2) {
         const double ctr1Level = checkControllerBattery(ctr1);
         const double ctr2Level = checkControllerBattery(ctr2);
+
         return ctr1Level < ctr2Level ? ctr1Level : ctr2Level;
     }
 

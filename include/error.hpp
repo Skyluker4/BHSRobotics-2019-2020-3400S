@@ -5,7 +5,8 @@
 #include "api.h"
 
 #define ERROR_INTERNAL 0XFFFF
-#define ERROR_PROS 0xEEEE
+#define ERROR_ERRNO 0xEEEE
+#define ERROR_PROS 0xDDDD
 
 #define ERROR_MOTOR_TEMPERATURE     0xF000
 #define ERROR_MOTOR_HBRIDGE_FAULT   0xE000

@@ -58,10 +58,10 @@ namespace error {
             lastError = lastWarning = ERROR_MOTOR_HBRIDGE_FAULT | mtr._port;
             break;
         case pros::E_MOTOR_FAULT_OVER_CURRENT:
-            lastError = lastWarning = ERROR_MOTOR_CURRENT;
+            lastError = lastWarning = ERROR_MOTOR_CURRENT | mtr._port;
             break;
         case pros::E_MOTOR_FAULT_DRV_OVER_CURRENT:
-            lastError = lastWarning = ERROR_MOTOR_HBRIDGE_CURRENT;
+            lastError = lastWarning = ERROR_MOTOR_HBRIDGE_CURRENT | mtr._port;
             break;
         }
 
