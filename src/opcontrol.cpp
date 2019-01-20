@@ -1,17 +1,24 @@
 #include "main.h"
+#include "config.hpp"
+#include "error.hpp"
 
 // Controls how fast the robot will turn with the joystick
 #define MAX_TURN_SPEED 75
 #define MAX_JOYSTICK_SPEED 90
 
-void opcontrol()
-{
-#include "config.h"
+void opcontrol() {
 	// Set up variables
 	uint_least8_t speed = 127;
 	int_least16_t leftX, leftY, power, turn, left, right;
 
 	while (true) {
+		// Check for errors
+		error::getWarning(ctr_master, mtr_backLeft, mtr_backRight, mtr_frontLeft, mtr_frontRight, mtr_launcher1, mtr_launcher2);
+		if(error::lastWarning != 0) {
+			// TODO: Handle errors/warnings
+			error::clearAllMsgs();
+		}
+
 		// Drive
 		// Speed change
 		if (ctr_master.get_digital(DIGITAL_X) && speed < 116)

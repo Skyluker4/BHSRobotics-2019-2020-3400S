@@ -823,7 +823,6 @@ class Motor {
 	 */
 	virtual std::int32_t get_voltage_limit(void) const;
 
-	private:
 	const std::uint8_t _port;
 };
 
