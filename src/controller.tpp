@@ -2,13 +2,15 @@
 #include "pros/misc.hpp"
 
 namespace controller {
-    template <typename C, typename R, typename... Args> bool rumble(C ctr, R rumblePattern, Args... rumblePatterns) {
+    template <typename C, const char* R, typename... Args>
+    bool rumble(C ctr, const char *rumblePattern, Args... rumblePatterns) {
         if(!rumble(ctr, rumblePattern)) return false;
         rumble(ctr, rumblePatterns...);
         return true;
     }
 
-    template <typename C, typename D, typename R, typename... Args> bool rumble(C ctr1, D ctr2, R rumblePattern, Args... rumblePatterns) {
+    template <typename C, typename D, const char* R, typename... Args>
+    bool rumble(C ctr1, D ctr2, const char *rumblePattern, Args... rumblePatterns) {
         if(!rumble(ctr1, ctr2, rumblePattern)) return false;
         rumble(ctr1, ctr2, rumblePatterns...);
         return true;

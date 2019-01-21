@@ -2,7 +2,8 @@
 #define _ERROR_HEADER
 
 #include <cstdint>
-#include "api.h"
+#include "pros/motors.hpp"
+#include "pros/misc.hpp"
 
 #define ERROR_INTERNAL 0XFFFF
 #define ERROR_ERRNO 0xEEEE
