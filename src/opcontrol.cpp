@@ -1,6 +1,9 @@
+#include <cstdint>
+
 #include "main.h"
 #include "config.hpp"
 #include "error.hpp"
+#include "handler.hpp"
 
 // Controls how fast the robot will turn with the joystick
 #define MAX_TURN_SPEED 75
@@ -13,11 +16,7 @@ void opcontrol() {
 
 	while (true) {
 		// Check for errors
-		error::getWarning(ctr_master, mtr_backLeft, mtr_backRight, mtr_frontLeft, mtr_frontRight, mtr_launcher1, mtr_launcher2);
-		if(error::lastWarning != 0) {
-			// TODO: Handle errors/warnings
-			error::clearAllMsgs();
-		}
+
 
 		// Drive
 		// Speed change
