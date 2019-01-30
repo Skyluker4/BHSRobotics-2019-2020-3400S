@@ -16,7 +16,7 @@ void autonomous() {
     */
 
     revUpLauncher(); //Luke, This is anish and I think you need to lower the speed of the launcher for the AUTONOMOUS PERIOD ONLY so that our robot is able to hit the flags.
-    launcher = 1110 //try this motor speed.
+    launcher = 110 //try this motor speed.
 
     // Move forward
     forward(0.175, 127); // This moving forward command is putting to much momentem on the robot in the far side program (RED FAR OR BLUE FAR).
