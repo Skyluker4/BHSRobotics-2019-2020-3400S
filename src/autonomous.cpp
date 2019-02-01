@@ -116,7 +116,7 @@ inline void autonomousRedClose() {
     revUpLauncher();
 
     // Move forward
-    forward(0.175, 127);
+    forward(0.175, 127); // This moving forward command is putting to much momentem on the robot in the far side program (RED FAR OR BLUE FAR).
 
     // Face flags
     turnLeft(0.52, 70);
