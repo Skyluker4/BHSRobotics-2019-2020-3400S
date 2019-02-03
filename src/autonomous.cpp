@@ -16,7 +16,7 @@
 * Plan for far:
 * Start facing flags
 * 1. Hit middle flag with preload
-* 2. Park
+* 2. Park - Not tested yet; Not implemented
 * 3. Stop
 */
 
@@ -64,16 +64,16 @@ inline void autonomousBlueClose() {
     // Hit the cap
     forward(0.6, 127);
 
-    pros::delay(500);
+    pros::delay(300);
 
     // Stop combine
     mtr_combine = 0;
 
     // Backwards
-    forward(0.25, -127);
+    forward(0.155 , -127);
 
     // Turn to platform
-    turnLeft(0.22, 127);
+    turnLeft(0.24, 127);
 
     // Get on platform
     forward(1.4, 127);
@@ -89,24 +89,24 @@ inline void autonomousBlueFar() {
     revUpLauncher();
 
     // Wait for launcher to rev up
-    pros::delay(5000);
+    pros::delay(6000);
 
     // Launch
     mtr_combine = -127;
-    pros::delay(500);
+    pros::delay(1000);
     mtr_combine = 0;
 
     // Stop all motors
     zeroAllMotors();
 
-    // Go forward
+    /*// Go forward
     forward(0.95, 127);
 
     // Turn left toward platform
     turnLeft(0.525, 70);
 
     // Go on platform
-    forward(1.5, 127);
+    forward(1.5, 127);*/
 }
 
 inline void autonomousRedClose() {
@@ -116,10 +116,10 @@ inline void autonomousRedClose() {
     revUpLauncher();
 
     // Move forward
-    forward(0.175, 127); // This moving forward command is putting to much momentem on the robot in the far side program (RED FAR OR BLUE FAR).
+    forward(0.175, 127);
 
     // Face flags
-    turnLeft(0.52, 70);
+    turnLeft(0.55, 70);
 
     // Wait for launcher to rev up
     pros::delay(5000);
@@ -136,7 +136,7 @@ inline void autonomousRedClose() {
     zeroAllMotors();
 
     // Turn left just a little
-    turnLeft(0.05, 127);
+    turnLeft(0.07, 127);
 
     // Hit low flag
     forward(0.6, 127);
@@ -145,25 +145,27 @@ inline void autonomousRedClose() {
     forward(0.4, -127);
 
     // Turn toward cap
-    turnRight(0.4875, 127);
+    turnRight(0.53, 127);
 
-    // Turn on combine
+    /*// Turn on combine
     mtr_combine = 110;
 
     // Hit the cap
     forward(0.6, 127);
 
-    /*// Turn to platform
-    turnRight(0.2, 127);
+    pros::delay(300);
 
-    // Go toward platform
-    forward(2, 127);
+    // Stop combine
+    mtr_combine = 0;
 
-    // Straighten out
-    turnRight(0.1, 127);
+    // Backwards
+    forward(0.155, -127);
+
+    // Turn to platform
+    turnRight(0.34, 127);
 
     // Get on platform
-    forward(2, 127);*/
+    forward(1.55, 127);*/
 }
 
 inline void autonomousRedFar() {
@@ -176,24 +178,24 @@ inline void autonomousRedFar() {
     revUpLauncher();
 
     // Wait for launcher to rev up
-    pros::delay(5000);
+    pros::delay(6000);
 
     // Launch
     mtr_combine = -127;
-    pros::delay(500);
+    pros::delay(1000);
     mtr_combine = 0;
 
     // Stop all motors
     zeroAllMotors();
 
-    // Go forward
+    /*// Go forward
     forward(0.95, 127);
 
     // Turn right toward platform
     turnRight(0.525, 70);
 
     // Go on platform
-    forward(1.5, 127);
+    forward(1.5, 127);*/
 }
 
 void autonomous() {
