@@ -54,20 +54,20 @@
 inline void autonomousBlueClose() {
     using namespace movement;
 
+    // Move forward
+    forwardEncoder(230);
+
+    // Face flags
+    turnRightEncoder(885);
+
     // Get launcher to full speed in time
     revUpLauncher();
 
-    // Move forward
-    forward(0.175, 127);
-
-    // Face flags
-    turnRight(0.67, 70);
-
     // Wait for launcher to rev up
-    pros::delay(4500);
+    pros::delay(3750);
 
     // Move forward a little
-    forward(0.4, 127);
+    forwardEncoder(1645);
 
     // Launch
     mtr_combine = -127;
@@ -75,25 +75,25 @@ inline void autonomousBlueClose() {
     mtr_combine = 0;
 
     // Stop all motors
-    zeroAllMotors();
+    zeroLaunchMotors();
 
     // Turn right just a little
-    turnRight(0.05, 127);
+    turnRightEncoder(100);
 
     // Hit low flag
-    forward(1, 127);
+    forwardEncoder(1760);
 
     // Back up
-    forward(0.8, -127);
+    backwardEncoder(1605);
 
     // Turn toward cap
-    turnLeft(0.4875, 127);
+    turnLeftEncoder(1100);
 
     // Turn on combine
-    mtr_combine = 110;
+    mtr_combine = 100;
 
     // Hit the cap
-    forward(0.6, 127);
+    forwardEncoder(2600);
 
     pros::delay(300);
 
@@ -101,13 +101,41 @@ inline void autonomousBlueClose() {
     mtr_combine = 0;
 
     // Backwards
-    forward(0.155, -127);
-/*
+    backwardEncoder(400);
+
+    // Turn toward low middle flag
+    turnRightEncoder(700);
+
+    //Other stuff to hit the flag
+
+    /*// Hit low middle flag
+    forwardEncoder(1945);
+
+    turnRight(0.2);
+    backward(0.1);
+    turnLeft(0.1);
+    forward(0.5);
+
+    //Backwards
+    backward(1.3, 100);
+
+    // Scoot up just a little
+    forward(0.1);
+
+    // Turn right
+    turnRightEncoder(1000);
+
+    // Forward a little
+    forwardEncoder(900);
+
     // Turn to platform
-    turnLeft(0.24, 127);
+    turnRightEncoder(840);
 
     // Get on platform
-    forward(1.4, 127);*/
+    forwardEncoder(3000);
+    */
+
+    zeroAllMotors();
 }
 
 inline void autonomousBlueFar() {
@@ -115,29 +143,27 @@ inline void autonomousBlueFar() {
 
     forwardEncoder(2500);
 
-    turnRight(0.3);
-
-    backward(0.1);
+    turnRightEncoder(1000);
 
 }
 
 inline void autonomousRedClose() {
     using namespace movement;
 
+    // Move forward
+    forwardEncoder(230);
+
+    // Face flags
+    turnLeftEncoder(885);
+
     // Get launcher to full speed in time
     revUpLauncher();
 
-    // Move forward
-    forward(0.175, 127);
-
-    // Face flags
-    turnLeft(0.7, 70);
-
     // Wait for launcher to rev up
-    pros::delay(4500);
+    pros::delay(3750);
 
     // Move forward a little
-    forward(0.4, 127);
+    forwardEncoder(1645);
 
     // Launch
     mtr_combine = -127;
@@ -145,33 +171,65 @@ inline void autonomousRedClose() {
     mtr_combine = 0;
 
     // Stop all motors
-    zeroAllMotors();
+    zeroLaunchMotors();
 
     // Turn left just a little
-    turnLeft(0.07, 127);
+    turnLeftEncoder(100);
 
     // Hit low flag
-    forward(1, 127);
+    forwardEncoder(1760);
 
     // Back up
-    forward(0.8, -127);
+    backwardEncoder(1605);
 
     // Turn toward cap
-    turnRight(0.53, 127);
+    turnRightEncoder(1100);
 
-    /*// Turn on combine
-    mtr_combine = 110;
+    // Turn on combine
+    mtr_combine = 100;
+
     // Hit the cap
-    forward(0.6, 127);
+    forwardEncoder(2600);
+
     pros::delay(300);
+
     // Stop combine
     mtr_combine = 0;
+
     // Backwards
-    forward(0.155, -127);
+    backwardEncoder(400);
+
+    // Turn toward low middle flag
+    turnLeftEncoder(700);
+
+    //Other stuff to hit the flag
+/*
+    // Hit low middle flag
+    forwardEncoder(1945);
+
+    turnLeft(0.2);
+    backward(0.1);
+    turnRight(0.1);
+    forward(0.5);
+
+    //Backwards
+    backward(1.3, 100);
+
+    // Scoot up just a little
+    forward(0.1);
+
+    // Turn left
+    turnLeftEncoder(1000);
+
+    // Forward a little
+    forwardEncoder(900);
+
     // Turn to platform
-    turnRight(0.34, 127);
+    turnLeftEncoder(840);
+
     // Get on platform
-    forward(1.55, 127);*/
+    forwardEncoder(3000);
+*/
     zeroAllMotors();
 }
 
@@ -180,9 +238,7 @@ inline void autonomousRedFar() {
 
     forwardEncoder(2500);
 
-    turnRight(0.3);
-
-    backward(0.1);
+    turnRightEncoder(1000);
 }
 
 inline void autonomousAny() {
